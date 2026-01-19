@@ -1,174 +1,335 @@
 :root {
-  --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  --primary-color: #0369a1;
-  --secondary-color: #075985;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    /* 沖縄の海（エメラルド〜ディープブルー）のパレット */
+    --bg-gradient-start: #2dd4bf;
+    /* エメラルドグリーン */
+    --bg-gradient-mid: #0ea5e9;
+    /* スカイブルー */
+    --bg-gradient-end: #0369a1;
+    /* ディープオーシャン */
+
+    --primary-color: #0c4a6e;
+    /* 濃い青（テキスト用） */
+    --secondary-color: #0ea5e9;
+    /* アクセントカラー */
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+
+    /* グラスモーフィズム強化 */
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: var(--bg-gradient);
-  color: var(--text-primary);
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    overflow-x: hidden;
+    position: relative;
+    /* フォールバック背景 */
+    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-mid));
 }
 
+/* --- 沖縄の海 背景アニメーション --- */
+.ocean-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(-45deg,
+            var(--bg-gradient-start),
+            var(--bg-gradient-mid),
+            #67e8f9,
+            var(--bg-gradient-end));
+    background-size: 400% 400%;
+    animation: shimmer 15s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 波のアニメーション */
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255, 255, 255, 0.2)" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-size: 1440px 320px;
+    /* SVGのサイズに合わせるか調整 */
+    background-repeat: repeat-x;
+    transform: translate3d(0, 0, 0);
+}
+
+/* 波の設定: サイズ調整と背景画像としてSVGを使う方式を変更して、より滑らかに */
+/* 修正: SVGをbackground-imageとして波紋のように重ねる */
+
+.wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    opacity: 0.4;
+    border-radius: 40%;
+    background: rgba(255, 255, 255, 0.25);
+    animation: wave 12s infinite linear;
+}
+
+.wave1 {
+    bottom: -160%;
+    border-radius: 40%;
+    animation-duration: 18s;
+    z-index: 1;
+}
+
+.wave2 {
+    bottom: -170%;
+    border-radius: 35%;
+    opacity: 0.2;
+    background: rgba(255, 255, 255, 0.2);
+    animation-duration: 25s;
+    z-index: 2;
+}
+
+.wave3 {
+    bottom: -175%;
+    border-radius: 45%;
+    opacity: 0.1;
+    background: rgba(255, 255, 255, 0.1);
+    animation-duration: 30s;
+    z-index: 3;
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- メインコンテンツ --- */
+
 .container {
-  max-width: 900px;
-  width: 100%;
-  animation: fadeIn 1s ease-out;
+    max-width: 900px;
+    width: 100%;
+    animation: fadeIn 1.2s ease-out;
+    position: relative;
+    z-index: 10;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .portfolio-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  overflow: hidden;
-  position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    position: relative;
+    overflow: hidden;
 }
 
-.portfolio-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.05) 0%, transparent 70%);
-  z-index: 0;
-  pointer-events: none;
+/* カード内の光の反射効果 */
+.portfolio-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            transparent 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            transparent 100%);
+    transform: skewX(-25deg);
+    animation: shine 8s infinite;
+    pointer-events: none;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    50% {
+        left: 200%;
+        opacity: 0;
+    }
+
+    100% {
+        left: 200%;
+        opacity: 0;
+    }
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  position: relative;
-  z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
 }
 
 @media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-  }
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
 }
 
 .profile-img-container {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid white;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 25px rgba(12, 74, 110, 0.2);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    flex-shrink: 0;
 }
 
 .profile-img-container:hover {
-  transform: scale(1.05);
+    transform: scale(1.08) rotate(-2deg);
 }
 
 .profile-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .title-section h1 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .title-section p {
-  font-size: 1.25rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    opacity: 0.9;
 }
 
 .content-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  position: relative;
-  z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 
 .info-box {
-  background: rgba(255, 255, 255, 0.4);
-  padding: 1.5rem;
-  border-radius: 16px;
-  border: 1px solid var(--glass-border);
-  transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.8rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .info-box:hover {
-  background: rgba(255, 255, 255, 0.6);
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.25);
 }
 
 .info-box h2 {
-  font-size: 1.1rem;
-  color: var(--secondary-color);
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+    font-size: 1.15rem;
+    color: #0284c7;
+    /* 明るめの青に変更 */
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
 }
 
 .info-box p {
-  color: var(--text-secondary);
-  font-size: 1rem;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
 }
 
 .hobby-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
 }
 
 .tag {
-  background: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  color: var(--primary-color);
-  border: 1px solid #e0f2fe;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(224, 242, 254, 0.9));
+    padding: 0.35rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    color: #0369a1;
+    border: 1px solid rgba(186, 230, 253, 0.5);
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s;
+}
+
+.tag:hover {
+    transform: scale(1.05);
 }
 
 .footer {
-  text-align: center;
-  margin-top: 2rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  opacity: 0.8;
+    text-align: center;
+    margin-top: 2.5rem;
+    color: #fff;
+    /* 背景が濃いかもしれないので白文字＋影 */
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
