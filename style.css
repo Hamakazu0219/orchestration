@@ -246,27 +246,55 @@ body {
     object-fit: cover;
 }
 
+
 .title-section h1 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+    /* 少し調整 */
     background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
+    margin-bottom: 0.2rem;
+    font-weight: 800;
     letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
-.title-section p {
-    font-size: 1.2rem;
+.title-section .subtitle {
+    font-size: 1.1rem;
     color: var(--text-secondary);
     font-weight: 600;
-    opacity: 0.9;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.badge {
+    background: rgba(14, 165, 233, 0.1);
+    color: #0369a1;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid rgba(14, 165, 233, 0.2);
 }
 
 .content-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    /* 明示的に2カラム */
     gap: 1.5rem;
+}
+
+@media (max-width: 700px) {
+    .content-section {
+        grid-template-columns: 1fr;
+    }
 }
 
 .info-box {
@@ -277,18 +305,23 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-box.full-width {
+    grid-column: 1 / -1;
 }
 
 .info-box:hover {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.85);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.25);
+    box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.3);
 }
 
 .info-box h2 {
     font-size: 1.15rem;
     color: #0284c7;
-    /* 明るめの青に変更 */
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -298,30 +331,33 @@ body {
 
 .info-box p {
     color: var(--text-secondary);
-    font-size: 1.05rem;
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 .hobby-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
-    margin-top: 0.5rem;
+    margin-top: auto;
+    /* 下に寄せる */
 }
 
 .tag {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(224, 242, 254, 0.9));
+    background: linear-gradient(135deg, #fff, #f0f9ff);
     padding: 0.35rem 1rem;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    color: #0369a1;
-    border: 1px solid rgba(186, 230, 253, 0.5);
-    font-weight: 500;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: #0284c7;
+    border: 1px solid rgba(186, 230, 253, 0.6);
+    font-weight: 600;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .tag:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 165, 233, 0.15);
 }
 
 .footer {
