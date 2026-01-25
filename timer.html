@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom Timer | Kazuyuki Hamada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="main-bg" style="background-image: url('bg.png');"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">KH.</div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="#" style="color: var(--text-main);">Timer</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Timer Application -->
+        <main class="timer-container reveal-text">
+
+            <div class="timer-ring-container">
+                <!-- SVG Progress Ring -->
+                <svg class="progress-ring" height="400" width="400">
+                    <circle class="progress-ring-circle-bg" stroke-width="12" fill="transparent" r="180" cx="200"
+                        cy="200" />
+                    <circle class="progress-ring-circle" id="progressLink" stroke-width="12" fill="transparent" r="180"
+                        cx="200" cy="200" />
+                </svg>
+
+                <div class="timer-display">
+                    <div class="timer-status" id="timerStatus">Ready</div>
+                    <div class="time-text" id="timeDisplay">05:00</div>
+                </div>
+            </div>
+
+            <div class="controls-container">
+                <button class="btn-control primary" id="startPauseBtn">
+                    <i class="fa-solid fa-play" id="playIcon"></i>
+                    <span id="startBtnText">Start</span>
+                </button>
+                <button class="btn-control" id="resetBtn">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Reset
+                </button>
+            </div>
+
+            <div class="presets-container">
+                <button class="preset-chip" data-time="60">1 min</button>
+                <button class="preset-chip" data-time="180">3 min</button>
+                <button class="preset-chip active" data-time="300">5 min</button>
+                <button class="preset-chip" data-time="600">10 min</button>
+                <button class="preset-chip" data-time="1500">25 min</button>
+            </div>
+
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-content">
+                <p>&copy; 2026 Kazuyuki Hamada. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <audio id="timerSound" src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3"
+        preload="auto"></audio>
+
+    <script src="timer.js"></script>
+</body>
+
+</html>
