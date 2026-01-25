@@ -4,110 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>はまかずのポートフォリオ</title>
-    <meta name="description" content="はまかずの自己紹介ポートフォリオページです。担当教科や趣味、教育方針についてご紹介します。">
+    <title>はまかずのポートフォリオ | Japanese Teacher & EdTech Innovator</title>
+    <meta name="description" content="はまかずの自己紹介ポートフォリオページです。国語教育とEdTechの融合を探究しています。">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="ocean-background">
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
-        <div class="wave wave3"></div>
-    </div>
-    <div class="container">
-        <main class="portfolio-card">
-            <header class="header">
-                <div class="profile-img-container">
-                    <img src="profile.png" alt="はまかずのプロフィール画像" class="profile-img">
+    <!-- Abstract Background -->
+    <div class="main-bg" style="background-image: url('bg.png');"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="wrapper">
+        <nav class="navbar">
+            <div class="nav-content">
+                <span class="logo">K.Hamada</span>
+                <div class="nav-links">
+                    <a href="#profile">Profile</a>
+                    <a href="#vision">Vision</a>
                 </div>
-                <div class="title-section">
-                    <h1>はまかず</h1>
-                    <p class="subtitle">Japanese Teacher | EdTech Innovator</p>
-                    <div class="badges">
-                        <span class="badge">Google Certified Trainer</span>
-                        <span class="badge">Google Certified Coach</span>
-                        <span class="badge">Loilo Certified Innovator</span>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-text">
+                    <h1 class="reveal-text">言葉の力を、<br><span class="accent-text">未来を生きる力</span>へ。</h1>
+                    <p class="hero-subline">Japanese Teacher | EdTech Innovator | Google Certified Trainer</p>
+                    <div class="hero-badges">
+                        <span class="hero-badge">Google Coach</span>
+                        <span class="hero-badge">Loilo Innovator</span>
                     </div>
                 </div>
-            </header>
-
-            <section class="content-section">
-                <!-- プロフィール概要 -->
-                <div class="info-box full-width">
-                    <h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                        Profile
-                    </h2>
-                    <p>
-                        <br>
-                    </p>
+                <div class="hero-image-container">
+                    <div class="profile-card">
+                        <img src="profile.png" alt="はまかずのプロフィール" class="profile-main-img">
+                        <div class="profile-card-overlay">
+                            <h3>濱田 和幸</h3>
+                            <p>Kazuyuki Hamada</p>
+                        </div>
+                    </div>
                 </div>
+            </section>
 
-                <div class="info-box">
-                    <h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                        </svg>
-                        専門・担当
-                    </h2>
-                    <p><strong>国語 / 探究学習</strong></p>
-                    <p style="font-size: 0.95rem; margin-top: 0.5rem; opacity: 0.9;">
-                        生成AIを活用した作文指導や、クラウドベースの協働学習デザインを専門とする。
-                    </p>
-                </div>
-
-                <div class="info-box">
-                    <h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                            </path>
-                        </svg>
-                        Interests
-                    </h2>
-                    <div class="hobby-tags">
-                        <span class="tag">国語教育</span>
-                        <span class="tag">EdTech</span>
-                        <span class="tag">AI活用</span>
-                        <span class="tag">読書</span>
-                        <span class="tag">ラーメン🍜</span>
-                        <span class="tag">ゴルフ⛳️</span>
+            <!-- Bento Grid Section -->
+            <section class="bento-grid" id="profile">
+                <!-- Profile Block -->
+                <div class="bento-item profile-block tall">
+                    <div class="bento-header">
+                        <span class="bento-label">About Me</span>
+                        <h2>Profile</h2>
+                    </div>
+                    <div class="bento-body">
+                        <p>国語科教員として、言葉を通じた思考の深化と、ICTを活用した新たな学びのデザインを探究しています。</p>
+                        <ul class="profile-list">
+                            <li><strong>Specialty:</strong> 国語教育 / 探究学習</li>
+                            <li><strong>Expertise:</strong> 生成AI活用 / 協働学習</li>
+                            <li><strong>Base:</strong> Okinawa, Japan</li>
+                        </ul>
+                    </div>
+                    <div class="bento-footer">
+                        <div class="social-icons">
+                            <!-- Placeholder for socials if needed -->
+                        </div>
                     </div>
                 </div>
 
-                <div class="info-box full-width">
-                    <h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                        </svg>
-                        Vision
-                    </h2>
-                    <p>
-                        <strong>「言葉の力を、未来を生きる力へ」</strong><br>
-                        変化の激しい時代において、言葉を操り、他者と協働し、新たな価値を創造する力を育みたい。Technologyはあくまで手段であり、その先にある「生徒の主体的・対話的で深い学び」を常に探究し続けます。
-                    </p>
+                <!-- Expertise Block -->
+                <div class="bento-item info-block wide">
+                    <div class="bento-header">
+                        <span class="bento-label">Expertise</span>
+                        <h2>専門・担当</h2>
+                    </div>
+                    <div class="bento-body">
+                        <p>生成AIを活用した作文指導や、クラウドベースの協働学習デザインを専門としています。生徒一人ひとりが「自分の言葉」を見つけるための伴走者であることを大切にしています。</p>
+                    </div>
+                </div>
+
+                <!-- Interests Block -->
+                <div class="bento-item info-block">
+                    <div class="bento-header">
+                        <span class="bento-label">Focus</span>
+                        <h2>Interests</h2>
+                    </div>
+                    <div class="bento-body">
+                        <div class="interest-tags">
+                            <span class="interest-tag">#EdTech</span>
+                            <span class="interest-tag">#AI</span>
+                            <span class="interest-tag">#国語教育</span>
+                            <span class="interest-tag">#読書</span>
+                            <span class="interest-tag">#ラーメン🍜</span>
+                            <span class="interest-tag">#ゴルフ⛳️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision Block -->
+                <div class="bento-item vision-block full-width" id="vision">
+                    <div class="vision-content">
+                        <div class="bento-header">
+                            <span class="bento-label">Mission</span>
+                            <h2>Vision</h2>
+                        </div>
+                        <p class="vision-text">
+                            変化の激しい時代において、言葉を操り、他者と協働し、新たな価値を創造する力を育みたい。<br>
+                            Technologyはあくまで手段であり、その先にある<strong>「生徒の主体的・対話的で深い学び」</strong>を常に探究し続けます。
+                        </p>
+                        <div class="vision-decor"></div>
+                    </div>
                 </div>
             </section>
         </main>
 
-        <footer class="footer">
-            <p>&copy; 2026 はまかずのポートフォリオ</p>
+        <footer class="main-footer">
+            <div class="footer-content">
+                <p>&copy; 2026 K.Hamada Portfolio. Designed for Creative Minds.</p>
+            </div>
         </footer>
     </div>
 </body>
